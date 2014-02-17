@@ -11,3 +11,5 @@ gem 'rack'
 gem 'sinatra', :require => 'sinatra/base'
 gem 'async_sinatra', :require => 'sinatra/async'
 gem 'haml'
+
+gem 'rvm-capistrano'

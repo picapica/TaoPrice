@@ -1,8 +1,8 @@
 # We're using RVM on a server, need this.
-$:.unshift(File.expand_path('./lib', ENV['rvm_path']))
-# require 'rvm/capistrano'
-set :rvm_ruby_string, '2.0.0'
-# set :rvm_type, :user
+#$:.unshift(File.expand_path('./lib', ENV['rvm_path']))
+require 'rvm/capistrano'
+set :rvm_ruby_string, '2.1.0'
+set :rvm_type, :user
 
 # Bundler tasks
 require 'bundler/capistrano'
