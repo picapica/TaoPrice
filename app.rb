@@ -4,6 +4,10 @@
 class AppController < Sinatra::Base
   enable :sessions
 
+  configure {
+    set :server, :puma
+  }
+
   get '/' do
     @total_items_count = Item.count
     @per_page    = (params[:per_page] || 50).to_i

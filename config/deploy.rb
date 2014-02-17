@@ -41,6 +41,8 @@ namespace :deploy do
     run "if [ -f #{unicorn_pid} ]; then kill -USR2 `cat #{unicorn_pid}`; else cd #{deploy_to}/current && DATABASE_URL=#{database_url} bundle exec unicorn -c #{unicorn_conf} -E #{rails_env} -D; fi"
   end
   task :start do
+    run "test -d #{File.dirname(unicorn_pid)} || mkdir -p #{File.dirname(unicorn_pid)}"
+    run "test -d #{deploy_to}/shared/log/ || mkdir -p #{deploy_to}/shared/log/"
     run "cd #{deploy_to}/current && DATABASE_URL=#{database_url} bundle exec unicorn -c #{unicorn_conf} -E #{rails_env} -D"
   end
   task :stop do

@@ -8,6 +8,7 @@ gem 'dm-sqlite-adapter'
 gem 'nokogiri'
 
 gem 'unicorn'
+gem 'puma'
 
 gem 'rack'
 gem 'sinatra', :require => 'sinatra/base'
