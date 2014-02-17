@@ -1,0 +1,69 @@
+-# coding: UTF-8
+
+.pagination.pagination-centered
+  %ul
+    -if @page <= 1
+      %li
+        %a &laquo;
+    -else
+      %li.disabled
+        %a{:href => "?page=#{@page - 1}"} &laquo;
+
+    -(([@page - 9, 1].max)..([@page + 9, @total_pages_count].min)).each do |p|
+      -if p == @page
+        %li.active
+          %a
+            = p
+      -else
+        %li
+          %a{:href => "?page=#{p}"}
+            = p
+
+    -if @page >= @total_pages_count
+      %li.disabled
+        %a &raquo;
+    -else
+      %li
+        %a{:href => "?page=#{@page + 1}"} &raquo;
+
+= @page
+of
+= @total_pages_count
+(total
+= @total_items_count
+)
+
+%table.table.table-striped.table-hover.table-bordered.table-condensed
+  -@items.each do |item|
+    %tr
+      %td{:id => [:item, item.id], :nowrap => true}
+        = item.id
+      %td{:nowrap => true}
+        = item.url
+
+.pager
+  -if @page <= 1
+    %li.previous.disabled
+      %a &laquo;
+  -else
+    %li.previous
+      %a{:href => "?page=#{@page - 1}"} &laquo;
+  -if @page >= @total_pages_count
+    %li.next.disabled
+      %a &raquo;
+  -else
+    %li.next
+      %a{:href => "?page=#{@page + 1}"} &raquo;
+
+.add-url
+  %form.ajax.form-horizontal.well{:action => "/item/create", :method => :post}
+    %fieldset
+      .control-group
+        %label.control-label{:for => :url} 新增商品监控地址
+        %input.input-large.input-large-altered{:type => :text, :maxlength => 255, :size => 60, :name => :url, :placeholder => "http://www.taobao.com"}
+        %button.btn.btn-primary.pull-right{:type => "submit"} 添加
+
+:css
+  .input-large.input-large-altered {
+      width: 480px;
+  }
