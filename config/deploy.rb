@@ -30,6 +30,9 @@ role :db, host
 
 set :deploy_to, "/home/lax/srv/#{application}"
 
+set :default_environment, {
+  'DATABASE_URL' => "#{deploy_to}/shared/#{application}.sqlite"
+}
 require 'puma/capistrano'
 
 namespace :rvm do

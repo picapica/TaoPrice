@@ -6,9 +6,7 @@ require './common.rb'
 
 require './app.rb'
 
-map '/taoprice' do
-  run AppController
-end
+run AppController
 
 map "/assets" do
   run Rack::Directory.new("./public")

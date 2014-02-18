@@ -24,7 +24,6 @@ class AppController < Sinatra::Base
   end
 
   post '/item/create' do
-    p params[:url].length
     @item = Item.first_or_create(:url => params[:url])
 
     redirect "/#item_#{@item.id}"
