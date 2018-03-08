@@ -1,6 +1,4 @@
-source 'http://ruby.taobao.org'
-
-ruby '2.1.0'
+source 'https://rubygems.org'
 
 gem 'data_mapper', :require => 'data_mapper'
 gem 'dm-sqlite-adapter'
